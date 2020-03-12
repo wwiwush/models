@@ -55,6 +55,11 @@ flags.DEFINE_boolean(
 )
 FLAGS = flags.FLAGS
 
+#the following 4 rows is the solution to the problem could not create cudnn handle: CUDNN_STATUS_INTERNAL_ERROR
+from tensorflow import InteractiveSession
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+session = InteractiveSession(config=config)
 
 def main(unused_argv):
   flags.mark_flag_as_required('model_dir')

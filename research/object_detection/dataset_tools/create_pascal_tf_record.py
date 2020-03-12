@@ -37,8 +37,9 @@ import tensorflow as tf
 from object_detection.utils import dataset_util
 from object_detection.utils import label_map_util
 
-
+# tf.gfiles=tf.io.gfiles
 flags = tf.app.flags
+# flags = tf.compat.v1.flags
 flags.DEFINE_string('data_dir', '', 'Root directory to raw PASCAL VOC dataset.')
 flags.DEFINE_string('set', 'train', 'Convert training set, validation set or '
                     'merged set.')
@@ -156,7 +157,7 @@ def main(_):
     years = [FLAGS.year]
 
   writer = tf.python_io.TFRecordWriter(FLAGS.output_path)
-
+  # writer = tf.python_io.compat.v1.TFRecordWriter(FLAGS.output_path)
   label_map_dict = label_map_util.get_label_map_dict(FLAGS.label_map_path)
 
   for year in years:
@@ -182,4 +183,6 @@ def main(_):
 
 
 if __name__ == '__main__':
-  tf.app.run()
+    # a=2
+    # main(a)
+    tf.app.run()
