@@ -99,7 +99,7 @@ wrapt              \
 #COPY run_jupyter.sh /
 
 # TensorBoard
-EXPOSE 6006
+#EXPOSE 6006
 # IPython
 #EXPOSE 8888
 
