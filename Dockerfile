@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         rsync \
         software-properties-common \
         unzip \
+        git \
+        nfs-common \
         && \
    DEBIAN_FRONTEND=noninteractiv apt-get install -y --no-install-recommends python-tk && \
     apt-get clean && \
@@ -18,6 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip install Cython \
 numpy
 RUN pip --no-cache-dir install \
+        mlflow>=1.0 \
         ipykernel \
         jupyter \
         scipy \
@@ -105,7 +108,7 @@ EXPOSE 6006
 #RUN chmod +x /run_jupyter.sh
 
 
-RUN cd /tmp && rm -rf * && https://github.com/wwiwush/models.git && mkdir mlruns
+RUN cd /tmp && rm -rf * && git clone https://github.com/wwiwush/models.git && mkdir mlruns
 WORKDIR /tmp/
 CMD ["sh","models/launch.sh"]
 
