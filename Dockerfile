@@ -108,7 +108,7 @@ wrapt              \
 #RUN chmod +x /run_jupyter.sh
 
 
-RUN cd /tmp && rm -rf * && git clone https://github.com/wwiwush/models.git && mkdir mlruns
+RUN cd /tmp && rm -rf * && git clone https://github.com/wwiwush/models.git && mkdir mlruns dataset
 WORKDIR /tmp/
 CMD ["sh","models/launch.sh"]
 
