@@ -108,8 +108,7 @@ wrapt              \
 #RUN chmod +x /run_jupyter.sh
 
 
-RUN cd /tmp && rm -rf * && git clone https://github.com/wwiwush/models.git && mkdir mlruns dataset
-WORKDIR /tmp/
-CMD ["sh","models/launch.sh"]
-
+RUN cd /tmp && rm -rf * && git clone https://github.com/wwiwush/models.git && mkdir nfsnew && cd nfsnew && nkdir mlruns dataset
+CMD ["mount","-t","nfs","192.168.50.216:/home/blita/nfsnew","/tmp/nfsnew"]
+#CMD ["sh","models/launch.sh"]
 #CMD ["/bin/bash", "--allow-root"]

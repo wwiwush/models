@@ -27,7 +27,7 @@ from object_detection import model_hparams
 from object_detection import model_lib
 
 mlflow.tensorflow.autolog()
-mlflow.set_tracking_uri('/tmp/mlruns')
+mlflow.set_tracking_uri('/tmp/nfsnew/mlruns')
 mlflow.set_experiment('obj_detection_official')
 
 flags.DEFINE_string(
