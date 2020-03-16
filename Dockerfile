@@ -81,34 +81,13 @@ wrapt              \
 # RUN pip --no-cache-dir install /_PIP_FILE_
 # RUN rm -f /_PIP_FILE_
 
-# Install TensorFlow CPU version from central repo
-#RUN pip --no-cache-dir install --upgrade tensorflow-gpu==1.14.0
-# --- ~ DO NOT EDIT OR DELETE BETWEEN THE LINES --- #
-
-# RUN ln -s /usr/bin/python3 /usr/bin/python#
-
-# Set up our notebook config.
-#COPY jupyter_notebook_config.py /root/.jupyter/
-
-# Copy sample notebooks.
-#COPY notebooks /notebooks
-
-# Jupyter has issues with being run directly:
-#   https://github.com/ipython/ipython/issues/7062
-# We just add a little wrapper script.
-#COPY run_jupyter.sh /
-
 # TensorBoard
 #EXPOSE 6006
 # IPython
 #EXPOSE 8888
 
-#WORKDIR "/notebooks"
-
-#RUN chmod +x /run_jupyter.sh
-
 
 RUN cd /tmp && rm -rf * && git clone https://github.com/wwiwush/models.git && mkdir nfsnew && cd nfsnew && mkdir mlruns dataset
-CMD ["mount","-t","nfs","192.168.50.216:/home/blita/nfsnew","/tmp/nfsnew"]
+#CMD ["mount","-t","nfs","192.168.50.216:/home/blita/nfsnew","/tmp/nfsnew"]
 #CMD ["sh","models/launch.sh"]
-#CMD ["/bin/bash", "--allow-root"]
+CMD ["/bin/bash", "--allow-root"]
