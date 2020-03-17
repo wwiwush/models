@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.14.0-gpu
+FROM tensorflow/tensorflow:latest-gpu-py3
 
 # Pick up some TF dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         software-properties-common \
         unzip \
         git \
+	vim \
         nfs-common \
         && \
    DEBIAN_FRONTEND=noninteractiv apt-get install -y --no-install-recommends python-tk && \
@@ -72,7 +73,7 @@ Werkzeug                \
 wheel                 \      
 wrapt              \  
         && \
-    python2 -m ipykernel.kernelspec
+    python3 -m ipykernel.kernelspec
 
 
 # --- DO NOT EDIT OR DELETE BETWEEN THE LINES --- #
