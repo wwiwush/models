@@ -35,8 +35,7 @@ certifi         \
 cycler         \  
  
 enum34          \      
-funcsigs           \  
-functools32          \  
+funcsigs           \   
 futures          \     
 gast                 \   
 google-pasta            \   
@@ -73,7 +72,7 @@ Werkzeug                \
 wheel                 \      
 wrapt              \  
         && \
-    python3 -m ipykernel.kernelspec
+    python -m ipykernel.kernelspec
 
 
 # --- DO NOT EDIT OR DELETE BETWEEN THE LINES --- #
