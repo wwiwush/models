@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:latest-gpu-py3
+FROM tensorflow/tensorflow:1.14.0-gpu
 
 # Pick up some TF dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -36,6 +36,7 @@ cycler         \
  
 enum34          \      
 funcsigs           \   
+functools32   \
 futures          \     
 gast                 \   
 google-pasta            \   
