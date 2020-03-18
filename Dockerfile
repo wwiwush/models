@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.14.0-gpu
+FROM tensorflow/tensorflow:1.14.0-gpu-py3
 
 # Pick up some TF dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -88,7 +88,7 @@ wrapt              \
 #EXPOSE 8888
 
 
-RUN cd /tmp && rm -rf * && git clone https://github.com/wwiwush/models.git && mkdir nfsnew && cd nfsnew && mkdir mlruns dataset
+RUN cd /tmp && rm -rf * && mkdir nfsnew && cd nfsnew && mkdir mlruns dataset
 #CMD ["mount","-t","nfs","192.168.50.216:/home/blita/nfsnew","/tmp/nfsnew"]
-CMD ["sh","/tmp/models/launch.sh"]
-#CMD ["/bin/bash", "--allow-root"]
+#CMD ["sh","/tmp/models/launch.sh"]
+CMD ["/bin/bash", "--allow-root"]
