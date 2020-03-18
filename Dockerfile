@@ -36,7 +36,6 @@ cycler         \
  
 enum34          \      
 funcsigs           \   
-functools32   \
 futures          \     
 gast                 \   
 google-pasta            \   
