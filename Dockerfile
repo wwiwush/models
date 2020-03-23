@@ -86,9 +86,9 @@ wrapt              \
 # IPython
 #EXPOSE 8888
 
-RUN useradd --create-home newuser && echo 'newuser:nu12345' | chpasswd
+RUN useradd --create-home --shell /bin/bash newuser && adduser mynewuser sudo && echo 'newuser:nu12345' | chpasswd
 
-RUN cd /tmp && rm -rf * && git clone https://github.com/wwiwush/models.git && mkdir nfsnew && cd nfsnew && mkdir mlruns
+RUN cd /tmp && rm -rf * && git clone https://github.com/wwiwush/models.git && mkdir nfsnew && cd nfsnew && mkdir mlruns dataset
 EXPOSE 22
 #CMD ["mount","-t","nfs","192.168.50.216:/home/blita/nfsnew","/tmp/nfsnew"]
 ENTRYPOINT ["sh","/tmp/models/launch.sh"]
