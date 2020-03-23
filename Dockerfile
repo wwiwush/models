@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:latest-gpu-py3
+FROM tensorflow/tensorflow:1.14.0-gpu
 
 # Pick up some TF dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         git \
 	vim \
         nfs-common \
+        openssh-server \
         && \
    DEBIAN_FRONTEND=noninteractiv apt-get install -y --no-install-recommends python-tk && \
     apt-get clean && \
@@ -86,8 +87,10 @@ wrapt              \
 # IPython
 #EXPOSE 8888
 
+RUN useradd --create-home --no-log-init --shell /bin/bash newuser
+RUN adduser newuser sudoRUN echo 'newuser:nu12345' | chpasswd
 
 RUN cd /tmp && rm -rf * && mkdir nfsnew && cd nfsnew && mkdir mlruns dataset
 #CMD ["mount","-t","nfs","192.168.50.216:/home/blita/nfsnew","/tmp/nfsnew"]
-#CMD ["sh","/tmp/models/launch.sh"]
-CMD ["/bin/bash", "--allow-root"]
+CMD ["sh","/tmp/models/launch.sh"]
+#CMD ["/bin/bash", "--allow-root"]
