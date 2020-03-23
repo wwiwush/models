@@ -21,8 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 RUN pip install Cython \
 numpy
-RUN pip --no-cache-dir install \
-        mlflow>=1.0 \
+RUN pip --no-cache-dir install mlflow==1.6.0 \
         ipykernel \
         jupyter \
         scipy \
@@ -87,7 +86,7 @@ wrapt              \
 # IPython
 #EXPOSE 8888
 
-RUN /etc/init.d/ssh start && useradd newuser && echo 'newuser:nu12345' | chpasswd
+RUN  && useradd newuser --create-home && echo 'newuser:nu12345' | chpasswd
 
 RUN cd /tmp && rm -rf * && git clone https://github.com/wwiwush/models.git && mkdir nfsnew && cd nfsnew && mkdir mlruns
 #CMD ["mount","-t","nfs","192.168.50.216:/home/blita/nfsnew","/tmp/nfsnew"]
