@@ -86,7 +86,7 @@ wrapt              \
 # IPython
 #EXPOSE 8888
 
-RUN useradd --create-home --shell /bin/bash newuser && adduser mynewuser sudo && echo 'newuser:nu12345' | chpasswd
+RUN useradd --create-home --shell /bin/bash newuser && adduser newuser sudo && echo 'newuser:nu12345' | chpasswd
 
 RUN cd /tmp && rm -rf * && git clone https://github.com/wwiwush/models.git && mkdir nfsnew && cd nfsnew && mkdir mlruns dataset
 EXPOSE 22
