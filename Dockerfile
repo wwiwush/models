@@ -89,7 +89,7 @@ wrapt              \
 
 #RUN useradd --create-home --shell /bin/bash newuser && adduser newuser sudo && echo 'newuser:nu12345' | chpasswd
 
-RUN cd /tmp && rm -rf * && git clone https://github.com/RockRobo/models.git && git clone https://github.com/cocodataset/cocoapi.git && cd cocoapi/PythonAPI &&
+RUN cd /tmp && rm -rf * && git clone https://github.com/RockRobo/models.git && git clone https://github.com/cocodataset/cocoapi.git && cd cocoapi/PythonAPI && \
 make && cp -r pycocotools /tmp/models/research/ && cd /tmp && mkdir nfsnew && cd nfsnew && mkdir mlruns dataset 
 #EXPOSE 22
 #CMD ["mount","-t","nfs","192.168.50.216:/home/blita/nfsnew","/tmp/nfsnew"]
