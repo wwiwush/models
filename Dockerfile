@@ -85,7 +85,7 @@ wrapt              \
 # TensorBoard
 #EXPOSE 6006
 # IPython
-#EXPOSE 8888
+#EXPOSE 8888 
 
 #RUN useradd --create-home --shell /bin/bash newuser && adduser newuser sudo && echo 'rockrobo:rockrobo' | chpasswd
 
