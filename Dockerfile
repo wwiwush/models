@@ -89,7 +89,8 @@ wrapt              \
 
 #RUN useradd --create-home --shell /bin/bash newuser && adduser newuser sudo && echo 'rockrobo:rockrobo' | chpasswd
 
-RUN cd /tmp && rm -rf * && git clone https://github.com/RockRobo/models.git && git \
+RUN cd /tmp && rm -rf * && git config --global credential.helper store && \
+git clone https://github.com/RockRobo/models.git && git \
 clone https://github.com/cocodataset/cocoapi.git && cd cocoapi/PythonAPI && \
 make && cp -r pycocotools /tmp/models/research/ && cd /tmp && mkdir nfsnew && cd nfsnew && mkdir mlruns dataset 
 #EXPOSE 22
