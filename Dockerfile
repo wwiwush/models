@@ -15,9 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	vim \
         nfs-common \
         openssh-server \
-	protobuf-compiler  \
-	python-tk \
-        && \
+	protobuf-compiler && \
    DEBIAN_FRONTEND=noninteractiv apt-get install -y --no-install-recommends python-tk && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
