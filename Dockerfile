@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	vim \
         nfs-common \
         openssh-server \
+	protobuf-compiler  \
+	python-tk \
         && \
    DEBIAN_FRONTEND=noninteractiv apt-get install -y --no-install-recommends python-tk && \
     apt-get clean && \
@@ -53,9 +55,7 @@ mkl-fft          \
 mkl-random      \         
 mock       \  
 olefile           \    
-opt-einsum           \   
-pip                \    
-protobuf             \      
+opt-einsum           \       
 pycocotools          \       
 pyparsing         \        
 python-dateutil        \      
