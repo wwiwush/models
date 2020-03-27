@@ -20,10 +20,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 RUN pip install Cython \
+contextlib2 \
+jupyter \    
+Pillow   \  
+lxml \    
+matplotlib    \   
 numpy
+
 RUN pip --no-cache-dir install mlflow==1.6.0 \
         ipykernel \
-        jupyter \
         scipy \
         pandas \
         absl-py \     
@@ -33,7 +38,6 @@ backports.functools-lru-cache \
 backports.weakref       \  
 certifi         \  
 cycler         \  
- 
 enum34          \      
 funcsigs           \   
 futures          \     
@@ -43,16 +47,13 @@ grpcio              \
 h5py      \   
 Keras-Applications        \      
 Keras-Preprocessing  \       
-kiwisolver       \       
-Markdown              \     
-matplotlib    \     
+kiwisolver       \    
+Markdown              \      
 mkl-fft          \      
-mkl-random      \     
-#mkl-service          \      
+mkl-random      \         
 mock       \  
 olefile           \    
-opt-einsum           \       
-Pillow           \  
+opt-einsum           \   
 pip                \    
 protobuf             \      
 pycocotools          \       
@@ -88,7 +89,8 @@ wrapt              \
 
 #RUN useradd --create-home --shell /bin/bash newuser && adduser newuser sudo && echo 'newuser:nu12345' | chpasswd
 
-RUN cd /tmp && rm -rf * && git clone https://github.com/wwiwush/models.git && mkdir nfsnew && cd nfsnew && mkdir mlruns dataset 
+RUN cd /tmp && rm -rf * && git clone https://github.com/RockRobo/models.git && git clone https://github.com/cocodataset/cocoapi.git && cd cocoapi/PythonAPI &&
+make && cp -r pycocotools /tmp/models/research/ && cd /tmp && mkdir nfsnew && cd nfsnew && mkdir mlruns dataset 
 #EXPOSE 22
 #CMD ["mount","-t","nfs","192.168.50.216:/home/blita/nfsnew","/tmp/nfsnew"]
 ENTRYPOINT ["sh","/tmp/models/launch.sh"]
